@@ -1,0 +1,63 @@
+{
+  "name": "Farmogram - Digital Agriculture",
+  "short_name": "Farmogram",
+  "description": "Connecting farmers and buyers through a modern, intelligent digital marketplace. Direct market, fair pricing, zero middlemen.",
+  "start_url": "/farmogram/auth/login.php",
+  "scope": "/farmogram/",
+  "id": "/farmogram/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "categories": ["business", "food", "shopping", "lifestyle"],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Login to Dashboard",
+      "short_name": "Login",
+      "description": "Access your Farmogram dashboard",
+      "url": "/farmogram/auth/login.php",
+      "icons": [{ "src": "/farmogram/assets/images/logo-light.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Create Account",
+      "short_name": "Register",
+      "description": "Join Farmogram marketplace",
+      "url": "/farmogram/auth/register.php",
+      "icons": [{ "src": "/farmogram/assets/images/logo-light.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "About Farmogram",
+      "short_name": "About",
+      "description": "Learn about our platform",
+      "url": "/farmogram/about.php",
+      "icons": [{ "src": "/farmogram/assets/images/logo-light.png", "sizes": "192x192" }]
+    }
+  ],
+  "icons": [
+    {
+      "src": "/farmogram/assets/images/logo-light.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/farmogram/assets/images/logo-light.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/farmogram/assets/images/logo-light.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/farmogram/assets/images/logo-light.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #00e676;
+    --primary-hover: #00c853;
+    --primary-light: rgba(0, 230, 118, 0.1);
+    --dark-bg: #111827;
+    --sidebar-bg: #ffffff;
+    --bg-light: #f3f4f6;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--bg-light);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* App Layout */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    position: fixed;
+    height: 100vh;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+.sidebar-logo i { color: var(--primary); }
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+.nav-menu a i { font-size: 1.1rem; width: 20px; text-align: center; }
+.nav-menu a:hover, .nav-menu a.active {
+    background: var(--primary-light);
+    color: var(--primary-hover);
+}
+.logout-btn {
+    margin-top: auto;
+    color: #ef4444 !important;
+}
+.logout-btn:hover { background: #fee2e2 !important; color: #b91c1c !important; }
+
+/* Main Content Area */
+.main-wrapper {
+    flex: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Topbar */
+.topbar {
+    height: 70px;
+    background: var(--sidebar-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+.page-title { font-size: 1.25rem; font-weight: 600; }
+.topbar-actions { display: flex; align-items: center; gap: 20px; }
+.icon-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+.icon-btn:hover { color: var(--primary); }
+.badge {
+    position: absolute;
+    top: -5px; right: -5px;
+    background: #ef4444; color: #fff;
+    font-size: 0.65rem; font-weight: bold;
+    border-radius: 50%; width: 16px; height: 16px;
+    display: flex; align-items: center; justify-content: center;
+}
+.user-profile {
+    display: flex; align-items: center; gap: 12px;
+    padding-left: 20px; border-left: 1px solid var(--border-color);
+}
+.avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%; background: var(--primary-light);
+    color: var(--primary-hover);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+}
+
+/* Content Container */
+.content-container { padding: 40px; }
+
+/* Dashboard Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px; margin-bottom: 30px;
+}
+.stat-card {
+    background: #fff; padding: 24px;
+    border-radius: var(--radius-lg); border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm); transition: var(--transition);
+}
+.stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.stat-header { display: flex; justify-content: space-between; margin-bottom: 15px; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+.stat-icon { background: var(--primary-light); color: var(--primary-hover); padding: 10px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.stat-value { font-size: 1.8rem; font-weight: 700; color: var(--dark-bg); }
+
+/* Standard Card */
+.card {
+    background: #fff; padding: 24px; margin-bottom: 24px;
+    border-radius: var(--radius-lg); border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+.card-header { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;}
+
+
+
+
+
+
+
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (Phones & Tablets under 768px)
+========================================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Convert Sidebar into a Mobile Bottom App Bar */
+    .app-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: flex;
+        overflow-x: auto;
+        padding: 10px 5px;
+        background: #fff;
+        border-right: none;
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    
+    .sidebar-logo { 
+        display: none; /* Hide the big logo on mobile */
+    }
+    
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .nav-menu li { 
+        width: auto; 
+        flex: 1;
+    }
+    
+    .nav-menu a {
+        padding: 8px 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+        text-align: center;
+        border-radius: 8px;
+    }
+    
+    .nav-menu a i { 
+        margin: 0 0 5px 0; 
+        font-size: 1.2rem; 
+    }
+
+    /* 2. Adjust the Main Content Area to avoid the bottom bar */
+    .main-wrapper {
+        margin-left: 0 !important;
+        width: 100%;
+        padding-bottom: 80px; /* Creates space so content isn't hidden behind the bottom nav */
+    }
+
+    /* 3. Stack all Topbars */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px;
+    }
+    .topbar-actions {
+        width: 100%;
+        justify-content: space-between; /* Spreads out profile and buttons */
+    }
+
+    /* 4. FORCE ALL GRIDS TO STACK (1 Column) */
+    .stats-grid,
+    .dashboard-grid,
+    .summary-banner,
+    .analytics-grid,
+    .advisor-grid,
+    .schemes-grid,
+    .relief-grid,
+    .form-grid,
+    .case-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    /* 5. Make Tables Swipeable */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth swiping on iOS */
+        margin: 0 -20px; /* Lets table stretch to screen edges */
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .data-table {
+        min-width: 700px; /* Forces the table to stay wide so the user can swipe left/right to see it */
+    }
+
+    /* 6. Fix Padding for Mobile Screens */
+    .content-container {
+        padding: 15px;
+    }
+    
+    .card, .form-card, .result-card, .history-card, .scheme-card, .stat-card {
+        padding: 20px 15px;
+    }
+
+    /* 7. Tab Buttons text fix */
+    .tabs-header {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tab-btn {
+        white-space: nowrap; /* Stops tab text from breaking into two lines */
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   LANDING PAGE MOBILE RESPONSIVENESS (index.php)
+========================================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Navbar Fix: Stack the logo and links */
+    .navbar {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 20px;
+    }
+
+    /* 2. Hero Section Fix: Stack text and image, center everything */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .hero-content {
+        padding-right: 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem; /* Shrink massive desktop fonts */
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-image {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero-buttons a {
+        width: 100%; /* Make buttons full-width for easy thumb tapping */
+    }
+
+    /* 3. Features & About Grids: Force to 1 column */
+    .features-grid,
+    .about-grid,
+    .steps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px;
+    }
+
+    /* 4. General Section Padding Adjustments */
+    .section {
+        padding: 50px 20px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* 5. Footer Fix: Stack links and info */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .footer-section h3::after {
+        left: 50%; /* Center the little underline in the footer */
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   PREMIUM LANGUAGE SWITCHER STYLES
+========================================= */
+.lang-switcher-container {
+    margin-right: 15px;
+    display: inline-block;
+}
+
+/* Style the Google simple dropdown */
+.goog-te-gadget-simple {
+    background-color: #f8fafc !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 30px !important;
+    padding: 6px 15px !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    transition: 0.3s;
+    display: flex !important;
+    align-items: center;
+    cursor: pointer;
+}
+
+.goog-te-gadget-simple:hover {
+    border-color: #10b981 !important;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Clean up Google's default formatting */
+.goog-te-gadget-simple .goog-te-menu-value span { color: #1e293b !important; font-family: 'Inter', sans-serif !important; }
+.goog-te-gadget-icon { display: none !important; } /* Hide the old google logo */
+.goog-te-menu-value span:nth-child(5) { display:none; } /* Hide the default arrow */
+.goog-te-menu-value span:nth-child(3) { display:none; } /* Hide the separator */
+
+/* FORCE HIDE the annoying Google Top Banner that pushes the page down */
+body { top: 0 !important; }
+.skiptranslate iframe { display: none !important; }
+#goog-gt-tt { display: none !important; }
+
+
+
+
+
+
+
+
+/* =========================================================
+   DARK MODE & NEW LOGO STYLES (Added for Upgrades)
+========================================================= */
+
+/* 1. Dark Mode Variables (Activates when data-theme="dark" is present) */
+[data-theme="dark"] {
+    --bg-light: #0f172a;          /* Main App Background */
+    --sidebar-bg: #1e293b;        /* Panels & Sidebar Background */
+    --text-main: #f8fafc;         /* Primary Text (White) */
+    --text-muted: #94a3b8;        /* Secondary Text (Gray) */
+    --border-color: #334155;      /* Dark Borders */
+    --dark-bg: #f8fafc;           /* Inverted for text that relies on dark-bg */
+}
+
+/* 2. Force hardcoded white backgrounds to use our theme variables */
+.card, .stat-card, .step-item, .testi-card, .form-card, .result-card, .order-card {
+    background-color: var(--sidebar-bg) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* 3. Smooth Transitions for color flipping */
+body, .sidebar, .topbar, .card, .stat-card, .step-item, .testi-card, h1, h2, h3, h4, p, span, div {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 4. Theme Toggle Button Styles */
+.theme-btn { 
+    background: transparent;
+    border: 1px solid var(--border-color); 
+    color: var(--text-main); 
+    width: 40px; height: 40px; 
+    border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; 
+    cursor: pointer; transition: 0.3s ease; font-size: 1.1rem; 
+}
+.theme-btn:hover { 
+    background: var(--primary); 
+    color: #fff; 
+    border-color: var(--primary); 
+}
+
+/* 5. Adaptive SVG Logo Styles */
+.app-logo-svg { 
+    width: 35px; 
+    height: 35px; 
+}
+.logo-text { 
+    color: var(--text-main); 
+    transition: color 0.3s ease; 
+}
+
+
+
+
+/* =========================================
+   DYNAMIC LOGO SWITCHER
+========================================= */
+
+/* 1. Default Light Mode State */
+.logo-light { display: block; }
+.logo-dark { display: none; }
+
+/* 2. When Dark Mode is Active */
+[data-theme="dark"] .logo-light { display: none !important; }
+[data-theme="dark"] .logo-dark { display: block !important; }
